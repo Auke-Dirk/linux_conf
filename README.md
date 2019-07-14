@@ -9,7 +9,7 @@ default i3   ~/.config/i3/config
 
 # git status in bash
 
-source ~/.git-prompt.sh
+ssource ~/.git-prompt.sh
 # bash git prompt
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -25,8 +25,9 @@ git_status_substitutes=(
     "s/+/✓/;" # staged
     "s/*/✕/;" # unstaged
     "s/\(.\+\)/($git_current_branch_name\1)/;" # insert branch again
+    "s/(/\\\n└─ (/;"
 )
-git_status_command="\n└─ \$(__git_ps1 '%s'| sed \"${git_status_substitutes[@]}\")"
+git_status_command="\$(__git_ps1 '%s'| sed \"${git_status_substitutes[@]}\")"
 
 PS1="\n\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$git_status_command\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\]\[\033[0m\033[0;36m\] ⟫\[\033[0m\] "
 
